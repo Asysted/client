@@ -1,4 +1,4 @@
-package com.mvnh.platude.data.network.auth
+package com.mvnh.platude.data.network.dto
 
 import kotlinx.serialization.Serializable
 

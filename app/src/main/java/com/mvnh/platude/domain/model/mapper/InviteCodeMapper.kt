@@ -1,6 +1,6 @@
 package com.mvnh.platude.domain.model.mapper
 
-import com.mvnh.platude.data.network.auth.InviteCodeDto
+import com.mvnh.platude.data.network.dto.InviteCodeDto
 import com.mvnh.platude.domain.model.InviteCode
 
 fun InviteCodeDto.toDomainModel(): InviteCode = InviteCode(code = this.inviteCode)

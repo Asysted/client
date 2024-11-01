@@ -1,7 +1,7 @@
 package com.mvnh.platude.di
 
 import com.mvnh.platude.data.repository.AuthRepositoryImpl
-import com.mvnh.platude.domain.repository.auth.AuthRepository
+import com.mvnh.platude.domain.repository.AuthRepository
 import com.mvnh.platude.domain.usecases.AuthUseCase
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.DefaultRequest

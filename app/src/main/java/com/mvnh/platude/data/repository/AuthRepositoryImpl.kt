@@ -1,12 +1,12 @@
 package com.mvnh.platude.data.repository
 
-import com.mvnh.platude.data.network.auth.TempTokenDto
+import com.mvnh.platude.data.network.dto.TempTokenDto
 import com.mvnh.platude.domain.model.BasicApiResponse
 import com.mvnh.platude.domain.model.InviteCode
 import com.mvnh.platude.domain.model.TempToken
 import com.mvnh.platude.domain.model.mapper.toDomainModel
 import com.mvnh.platude.domain.model.mapper.toDto
-import com.mvnh.platude.domain.repository.auth.AuthRepository
+import com.mvnh.platude.domain.repository.AuthRepository
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
