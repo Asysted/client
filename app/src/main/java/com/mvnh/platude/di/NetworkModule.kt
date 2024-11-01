@@ -1,5 +1,6 @@
 package com.mvnh.platude.di
 
+import com.mvnh.platude.data.network.service.AuthService
 import com.mvnh.platude.data.repository.AuthRepositoryImpl
 import com.mvnh.platude.domain.repository.AuthRepository
 import com.mvnh.platude.domain.usecases.AuthUseCase
@@ -26,6 +27,7 @@ val networkModule = module {
         }
     }
 
+    single { AuthService(get()) }
     single<AuthRepository> { AuthRepositoryImpl(get()) }
     single { AuthUseCase(get()) }
 }

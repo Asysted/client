@@ -14,6 +14,11 @@ class AuthViewModel(private val useCase: AuthUseCase) : ViewModel() {
         get() = _authState
 
     fun redeemInviteCode(inviteCode: String) {
+        if (!useCase.isValidInviteCode(inviteCode)) {
+            _authState.value = AuthState.Error("Invalid invite code")
+            return
+        }
+
         _authState.value = AuthState.Loading
 
         viewModelScope.launch {

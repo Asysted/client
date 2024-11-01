@@ -1,4 +1,4 @@
-package com.mvnh.platude.domain.model.mapper
+package com.mvnh.platude.data.mapper
 
 import com.mvnh.platude.data.network.dto.TempTokenDto
 import com.mvnh.platude.domain.model.TempToken

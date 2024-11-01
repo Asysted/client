@@ -37,30 +37,27 @@ import com.mvnh.platude.ui.viewmodel.AuthState
 import com.mvnh.platude.ui.viewmodel.AuthViewModel
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
-import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthScreen(viewModel: AuthViewModel = koinViewModel()) {
-    var inviteCode by rememberSaveable { mutableStateOf("") }
-    val authState by viewModel.authState.collectAsState()
+    val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
-    val context = LocalContext.current
+    var inviteCode by rememberSaveable { mutableStateOf("") }
+    val authState by viewModel.authState.collectAsState()
+    val isErrorMessageVisible = authState is AuthState.Error
+    val isLoading = authState is AuthState.Loading
 
     LaunchedEffect(authState) {
         if (authState is AuthState.Success<*>) {
             Log.d("Platude", (authState as AuthState.Success<*>).data.toString())
 
-            snackbarHostState.showSnackbar(
-                context.resources.getString(R.string.redeem_success)
-            )
+            snackbarHostState.showSnackbar(context.resources.getString(R.string.redeem_success))
         } else if (authState is AuthState.Error) {
             Log.e("Platude", (authState as AuthState.Error).message)
 
-            snackbarHostState.showSnackbar(
-                (authState as AuthState.Error).message
-            )
+            snackbarHostState.showSnackbar((authState as AuthState.Error).message)
         }
     }
 
@@ -87,7 +84,7 @@ fun AuthScreen(viewModel: AuthViewModel = koinViewModel()) {
                 value = inviteCode,
                 onValueChange = { if (it.length <= 36) inviteCode = it },
                 modifier = Modifier.width(300.dp),
-                enabled = authState !is AuthState.Loading,
+                enabled = !isLoading,
                 label = {
                     Text(
                         text = stringResource(id = R.string.invite_code)
@@ -96,9 +93,7 @@ fun AuthScreen(viewModel: AuthViewModel = koinViewModel()) {
                 trailingIcon = {
                     IconButton(onClick = {
                         coroutineScope.launch {
-                            snackbarHostState.showSnackbar(
-                                context.resources.getString(R.string.invite_code_info)
-                            )
+                            snackbarHostState.showSnackbar(context.resources.getString(R.string.invite_code_info))
                         }
                     }) {
                         Icon(
@@ -108,21 +103,23 @@ fun AuthScreen(viewModel: AuthViewModel = koinViewModel()) {
                     }
                 },
                 supportingText = {
-                    if (inviteCode.isNotEmpty() && !isValidUUID(inviteCode)) {
+                    if (isErrorMessageVisible) {
                         Text(
-                            text = stringResource(id = R.string.invite_code_info)
+                            text = (authState as AuthState.Error).message
                         )
                     }
                 },
-                isError = authState is AuthState.Error || !isValidUUID(inviteCode) && inviteCode.isNotEmpty(),
+                isError = isErrorMessageVisible,
                 singleLine = true
             )
 
             Button(
                 onClick = {
-                    coroutineScope.launch { viewModel.redeemInviteCode(inviteCode) }
+                    coroutineScope.launch {
+                        viewModel.redeemInviteCode(inviteCode)
+                    }
                 },
-                enabled = authState !is AuthState.Loading && isValidUUID(inviteCode)
+                enabled = !isLoading
             ) {
                 Text(
                     text = stringResource(id = R.string.redeem)
@@ -130,8 +127,4 @@ fun AuthScreen(viewModel: AuthViewModel = koinViewModel()) {
             }
         }
     }
-}
-
-private fun isValidUUID(uuid: String): Boolean {
-    return runCatching { UUID.fromString(uuid) }.isSuccess && uuid.length == 36
 }
