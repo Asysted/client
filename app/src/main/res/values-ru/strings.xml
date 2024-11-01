@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Platude</string>
+    <string name="auth">Авторизация</string>
+    <string name="invite_code">Код приглашения</string>
+    <string name="invite_code_info">Код приглашения должен быть в формате UUID</string>
+    <string name="redeem">Принять</string>
+    <string name="redeem_success">Код приглашения успешно использован</string>
+</resources>
