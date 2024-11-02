@@ -35,10 +35,10 @@ fun MainScreen() {
     Scaffold(
         bottomBar = {
             if (currentRoute in topLevelDestinations.map { it.route }) {
-                PlatudeNavBar(
-                    navController = localNavController,
-                    destinations = topLevelDestinations
-                )
+//                PlatudeNavBar(
+//                    navController = localNavController,
+//                    destinations = topLevelDestinations
+//                )
             }
         },
         contentWindowInsets = WindowInsets(top = 0.dp)
