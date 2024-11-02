@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Scaffold
@@ -14,7 +15,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.mvnh.platude.R
 import com.mvnh.platude.ui.navigation.BottomNavItem
-import com.mvnh.platude.ui.navigation.PlatudeNavBar
 import com.mvnh.platude.ui.navigation.PlatudeNavHost
 import com.mvnh.platude.ui.navigation.Screen
 
@@ -47,6 +47,7 @@ fun MainScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
+                .safeDrawingPadding()
         ) {
             PlatudeNavHost(
                 modifier = Modifier

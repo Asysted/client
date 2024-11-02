@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.mvnh.platude.ui.screen.AuthScreen
+import com.mvnh.platude.ui.screen.RedeemInviteCodeScreen
 
 @Composable
 fun PlatudeNavHost(
@@ -22,7 +22,7 @@ fun PlatudeNavHost(
         exitTransition = { ExitTransition.None }
     ) {
         composable(Screen.Auth.route) {
-            AuthScreen()
+            RedeemInviteCodeScreen()
         }
     }
 }
