@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Platude"
+rootProject.name = "Asysted"
 include(":app")

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mvnh.platude"
+    namespace = "com.mvnh.asysted"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.mvnh.platude"
+        applicationId = "com.mvnh.asysted"
         minSdk = 29
         targetSdk = 35
         versionCode = 1
@@ -67,4 +67,6 @@ dependencies {
     implementation(libs.koin.compose)
     implementation(libs.koin.compose.viewmodel)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.gif)
 }

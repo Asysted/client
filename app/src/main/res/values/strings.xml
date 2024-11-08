@@ -1,8 +1,17 @@
 <resources>
-    <string name="app_name">Platude</string>
-    <string name="auth">Authorization</string>
+    <string name="app_name">Asysted</string>
     <string name="invite_code">Invite code</string>
-    <string name="invite_code_info">The invitation code should be in UUID format</string>
+    <string name="invite_code_info">The invite code should be in UUID4 format</string>
     <string name="redeem">Redeem</string>
-    <string name="redeem_success">Invitation code successfully redeemed</string>
+    <string name="redeem_success">Invite code successfully redeemed</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="welcome">Welcome</string>
+    <string name="username">Username</string>
+    <string name="welcome_image">Welcome image</string>
+    <string name="back">Back</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
+    <string name="password">Password</string>
+    <string name="invite_code_accepted_timestamp">invite_code_accepted_timestamp</string>
 </resources>
